@@ -6933,13 +6933,13 @@ $global.System.register('no-schema:/cocos-js/cc.js', [], function (exports, modu
             var minigame = {};
             cloneObject(minigame, my);
             minigame.my = {};
-            minigame.my.onKeyDown = (_wx$onKeyDown = my.onKeyDown) === null || _wx$onKeyDown === void 0 ? void 0 : _wx$onKeyDown.bind(wx);
-            minigame.my.onKeyUp = (_wx$onKeyUp = my.onKeyUp) === null || _wx$onKeyUp === void 0 ? void 0 : _wx$onKeyUp.bind(wx);
-            minigame.my.onMouseDown = (_wx$onMouseDown = my.onMouseDown) === null || _wx$onMouseDown === void 0 ? void 0 : _wx$onMouseDown.bind(wx);
-            minigame.my.onMouseMove = (_wx$onMouseMove = my.onMouseMove) === null || _wx$onMouseMove === void 0 ? void 0 : _wx$onMouseMove.bind(wx);
-            minigame.my.onMouseUp = (_wx$onMouseUp = my.onMouseUp) === null || _wx$onMouseUp === void 0 ? void 0 : _wx$onMouseUp.bind(wx);
-            minigame.my.onWheel = (_wx$onWheel = my.onWheel) === null || _wx$onWheel === void 0 ? void 0 : _wx$onWheel.bind(wx);
-
+            minigame.my.onKeyDown = (_wx$onKeyDown = my.onKeyDown) === null || _wx$onKeyDown === void 0 ? void 0 : _wx$onKeyDown.bind(my);
+            minigame.my.onKeyUp = (_wx$onKeyUp = my.onKeyUp) === null || _wx$onKeyUp === void 0 ? void 0 : _wx$onKeyUp.bind(my);
+            minigame.my.onMouseDown = (_wx$onMouseDown = my.onMouseDown) === null || _wx$onMouseDown === void 0 ? void 0 : _wx$onMouseDown.bind(my);
+            minigame.my.onMouseMove = (_wx$onMouseMove = my.onMouseMove) === null || _wx$onMouseMove === void 0 ? void 0 : _wx$onMouseMove.bind(my);
+            minigame.my.onMouseUp = (_wx$onMouseUp = my.onMouseUp) === null || _wx$onMouseUp === void 0 ? void 0 : _wx$onMouseUp.bind(my);
+            minigame.my.onWheel = (_wx$onWheel = my.onWheel) === null || _wx$onWheel === void 0 ? void 0 : _wx$onWheel.bind(my);
+my
             var _cachedSystemInfo = my.getSystemInfoSync();
 
             minigame.testAndUpdateSystemInfoCache = function (testAmount, testInterval) {
@@ -6989,13 +6989,13 @@ $global.System.register('no-schema:/cocos-js/cc.js', [], function (exports, modu
             var landscapeOrientation = Orientation.LANDSCAPE_RIGHT;
 
             if (systemInfo.platform.toLocaleLowerCase() !== 'android') {
-              my.onDeviceOrientationChange(function (res) {
-                if (res.value === 'landscape') {
-                  landscapeOrientation = Orientation.LANDSCAPE_RIGHT;
-                } else if (res.value === 'landscapeReverse') {
-                  landscapeOrientation = Orientation.LANDSCAPE_LEFT;
-                }
-              });
+              // my.onDeviceOrientationChange(function (res) {
+              //   if (res.value === 'landscape') {
+              //     landscapeOrientation = Orientation.LANDSCAPE_RIGHT;
+              //   } else if (res.value === 'landscapeReverse') {
+              //     landscapeOrientation = Orientation.LANDSCAPE_LEFT;
+              //   }
+              // });
             }
 
             Object.defineProperty(minigame, 'orientation', {
@@ -7044,7 +7044,7 @@ $global.System.register('no-schema:/cocos-js/cc.js', [], function (exports, modu
               my.startAccelerometer(res);
             };
 
-            minigame.createInnerAudioContext = createInnerAudioContextPolyfill(wx, {
+            minigame.createInnerAudioContext = createInnerAudioContextPolyfill(my, {
               onPlay: true,
               onPause: true,
               onStop: true,
