@@ -45,33 +45,17 @@ App({
     console.info('App onLaunched');
 
     $global.__cocosCallback = function () {
-      globalThis.__myRequire = require;  // FIX: require cannot work in separate engine 
-      require('./web-adapter');
-      
-      // Polyfills bundle.
-      require("src/polyfills.bundle.js");
-      
-      // SystemJS support.
-      require("src/system.bundle.js");
-      var System = window.System;
-      
-      const importMap = require("src/import-map.js").default;
+      require('./system.bundle.js');
+      require('./load-module.js');
+      const importMap = require('./src/import-map.js');
+      let System = $global.System;
       System.warmup({
-          importMap,
-          importMapUrl: 'src/import-map.js',
-          defaultHandler: (urlNoSchema) => {
-              require('.' + urlNoSchema);
-          },
-          handlers: {
-              'plugin:': (urlNoSchema) => {
-                  requirePlugin(urlNoSchema);
-              },
-              'project:': (urlNoSchema) => {
-                  require(urlNoSchema);
-              },
-          },
+        importMap,
+        importMapUrl: 'src/import-map.js',
       });
-      
+      System.import('./web-adapter.js');
+      System.import("./polyfills.bundle.js");
+            
       System.import('./application.js').then(({ Application }) => {
           return new Application();
       }).then((application) => {

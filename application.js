@@ -1,5 +1,5 @@
-var System = window.System;
-System.register([], function (_export, _context) {
+var System = $global.System;
+System.register('no-schema:/application.js', [], function (_export, _context) {
   "use strict";
 
   var cc, Application;
