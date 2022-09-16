@@ -1,4 +1,7 @@
+$global.System.register('no-schema:/cocos-js/cc.js', [], function (exports, module) {
+
 var window = $global;
+var globalThis = $global;
 var cc = window.cc = window.cc || {};
 var b2 = window.b2 = window.b2 || {};
 var sp = window.sp = window.sp || {};
@@ -36,7 +39,6 @@ var __importStar = window.__importStar;
 var __importDefault = window.__importDefault;
 var __classPrivateFieldGet = window.__classPrivateFieldGet;
 var __classPrivateFieldSet = window.__classPrivateFieldSet;
-$global.System.register('no-schema:/cocos-js/cc.js', [], function (exports, module) {
     'use strict';
     return {
         execute: function () {
@@ -17635,9 +17637,9 @@ my
                 }
 
                 {
-                  var _GameGlobal;
+                  // var _GameGlobal;
 
-                  this.__isWebIOS14OrIPadOS14Env = (sys.os === OS.IOS || sys.os === OS.OSX) && ((_GameGlobal = GameGlobal) === null || _GameGlobal === void 0 ? void 0 : _GameGlobal.isIOSHighPerformanceMode) && /(OS 1((4\.[0-9])|(5\.[0-3])))|(Version\/1((4\.[0-9])|(5\.[0-3])))/.test(window.navigator.userAgent);
+                  this.__isWebIOS14OrIPadOS14Env = false;
                 }
               },
               now: function now() {

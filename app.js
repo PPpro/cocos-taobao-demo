@@ -66,7 +66,7 @@ App({
       
       function onApplicationCreated(application) {
           return System.import('cc').then((cc) => {
-              require('./engine-adapter');
+            System.import('./engine-adapter.js');
               return application.init(cc);
           }).then(() => { return application.start(); });
       }      
