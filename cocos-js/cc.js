@@ -557,7 +557,7 @@ return {
         }
 
         function tryDefineGlobal (name, value) {
-            const _global = typeof window === 'undefined' ? global : window;
+            const _global = $global;
             if (typeof _global[name] === 'undefined') {
                 return (_global[name] = value);
             } else {
@@ -1037,7 +1037,7 @@ return {
           "0200": "You should specify a valid DOM canvas element."
         };
 
-        var _global = typeof window === 'undefined' ? global : window;
+        var _global = $global;
 
         var legacyCC = exports('cclegacy', {
           _global: _global
@@ -17644,7 +17644,7 @@ return {
             {
               var _GameGlobal;
 
-              this.__isWebIOS14OrIPadOS14Env = (sys.os === OS.IOS || sys.os === OS.OSX) && ((_GameGlobal = GameGlobal) === null || _GameGlobal === void 0 ? void 0 : _GameGlobal.isIOSHighPerformanceMode) && /(OS 1((4\.[0-9])|(5\.[0-3])))|(Version\/1((4\.[0-9])|(5\.[0-3])))/.test(window.navigator.userAgent);
+              this.__isWebIOS14OrIPadOS14Env = false;
             }
           },
           now: function now() {
