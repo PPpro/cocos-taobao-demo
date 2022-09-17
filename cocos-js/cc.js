@@ -30662,15 +30662,11 @@ return {
         legacyCC.resources = resources;
 
         function downloadDomImage(url, options, onComplete) {
-          var img = new Image();
-
-          if (window.location.protocol !== 'file:') {
-            img.crossOrigin = 'anonymous';
-          }
+          var img = $global.screencanvas.createImage()
 
           function loadCallback() {
-            img.removeEventListener('load', loadCallback);
-            img.removeEventListener('error', errorCallback);
+            img.onload = null;
+            img.onerror = null;
 
             if (onComplete) {
               onComplete(null, img);
@@ -30678,16 +30674,16 @@ return {
           }
 
           function errorCallback() {
-            img.removeEventListener('load', loadCallback);
-            img.removeEventListener('error', errorCallback);
+            img.onload = null;
+            img.onerror = null;
 
             if (onComplete) {
               onComplete(new Error(getError(4930, url)));
             }
           }
 
-          img.addEventListener('load', loadCallback);
-          img.addEventListener('error', errorCallback);
+          img.onload = loadCallback;
+          img.onerror - errorCallback;
           img.src = url;
           return img;
         }
