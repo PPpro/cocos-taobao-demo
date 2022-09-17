@@ -40,6 +40,7 @@ var __importStar = window.__importStar;
 var __importDefault = window.__importDefault;
 var __classPrivateFieldGet = window.__classPrivateFieldGet;
 var __classPrivateFieldSet = window.__classPrivateFieldSet;
+var requestAnimationFrame = window.requestAnimationFrame;
 
   'use strict';
   return {
