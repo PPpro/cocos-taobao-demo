@@ -15918,23 +15918,23 @@ return {
 
         var _wx$onKeyDown, _wx$onKeyUp, _wx$onMouseDown, _wx$onMouseMove, _wx$onMouseUp, _wx$onWheel, _minigame$onWindowRes;
         var minigame = {};
-        cloneObject(minigame, wx);
-        minigame.wx = {};
-        minigame.wx.onKeyDown = (_wx$onKeyDown = wx.onKeyDown) === null || _wx$onKeyDown === void 0 ? void 0 : _wx$onKeyDown.bind(wx);
-        minigame.wx.onKeyUp = (_wx$onKeyUp = wx.onKeyUp) === null || _wx$onKeyUp === void 0 ? void 0 : _wx$onKeyUp.bind(wx);
-        minigame.wx.onMouseDown = (_wx$onMouseDown = wx.onMouseDown) === null || _wx$onMouseDown === void 0 ? void 0 : _wx$onMouseDown.bind(wx);
-        minigame.wx.onMouseMove = (_wx$onMouseMove = wx.onMouseMove) === null || _wx$onMouseMove === void 0 ? void 0 : _wx$onMouseMove.bind(wx);
-        minigame.wx.onMouseUp = (_wx$onMouseUp = wx.onMouseUp) === null || _wx$onMouseUp === void 0 ? void 0 : _wx$onMouseUp.bind(wx);
-        minigame.wx.onWheel = (_wx$onWheel = wx.onWheel) === null || _wx$onWheel === void 0 ? void 0 : _wx$onWheel.bind(wx);
+        cloneObject(minigame, my);
+        minigame.my = {};
+        minigame.my.onKeyDown = (_wx$onKeyDown = my.onKeyDown) === null || _wx$onKeyDown === void 0 ? void 0 : _wx$onKeyDown.bind(my);
+        minigame.my.onKeyUp = (_wx$onKeyUp = my.onKeyUp) === null || _wx$onKeyUp === void 0 ? void 0 : _wx$onKeyUp.bind(my);
+        minigame.my.onMouseDown = (_wx$onMouseDown = my.onMouseDown) === null || _wx$onMouseDown === void 0 ? void 0 : _wx$onMouseDown.bind(my);
+        minigame.my.onMouseMove = (_wx$onMouseMove = my.onMouseMove) === null || _wx$onMouseMove === void 0 ? void 0 : _wx$onMouseMove.bind(my);
+        minigame.my.onMouseUp = (_wx$onMouseUp = my.onMouseUp) === null || _wx$onMouseUp === void 0 ? void 0 : _wx$onMouseUp.bind(my);
+        minigame.my.onWheel = (_wx$onWheel = my.onWheel) === null || _wx$onWheel === void 0 ? void 0 : _wx$onWheel.bind(my);
 
-        var _cachedSystemInfo = wx.getSystemInfoSync();
+        var _cachedSystemInfo = my.getSystemInfoSync();
 
         minigame.testAndUpdateSystemInfoCache = function (testAmount, testInterval) {
           var successfullyTestTimes = 0;
           var intervalTimer = null;
 
           function testCachedSystemInfo() {
-            var currentSystemInfo = wx.getSystemInfoSync();
+            var currentSystemInfo = my.getSystemInfoSync();
 
             if (_cachedSystemInfo.screenWidth === currentSystemInfo.screenWidth && _cachedSystemInfo.screenHeight === currentSystemInfo.screenHeight) {
               if (++successfullyTestTimes >= testAmount && intervalTimer !== null) {
@@ -15953,7 +15953,7 @@ return {
 
         minigame.testAndUpdateSystemInfoCache(10, 500);
         (_minigame$onWindowRes = minigame.onWindowResize) === null || _minigame$onWindowRes === void 0 ? void 0 : _minigame$onWindowRes.call(minigame, function () {
-          _cachedSystemInfo = wx.getSystemInfoSync();
+          _cachedSystemInfo = my.getSystemInfoSync();
         });
 
         minigame.getSystemInfoSync = function () {
@@ -15964,7 +15964,7 @@ return {
         minigame.isDevTool = systemInfo.platform === 'devtools';
         Object.defineProperty(minigame, 'isLandscape', {
           get: function get() {
-            var locSystemInfo = wx.getSystemInfoSync();
+            var locSystemInfo = my.getSystemInfoSync();
 
             if (typeof locSystemInfo.deviceOrientation === 'string') {
               return locSystemInfo.deviceOrientation.startsWith('landscape');
@@ -15976,7 +15976,7 @@ return {
         var landscapeOrientation = Orientation.LANDSCAPE_RIGHT;
 
         if (systemInfo.platform.toLocaleLowerCase() !== 'android') {
-          // wx.onDeviceOrientationChange(function (res) {
+          // my.onDeviceOrientationChange(function (res) {
           //   if (res.value === 'landscape') {
           //     landscapeOrientation = Orientation.LANDSCAPE_RIGHT;
           //   } else if (res.value === 'landscapeReverse') {
@@ -16018,20 +16018,20 @@ return {
 
         minigame.offAccelerometerChange = function (cb) {
           if (_accelerometerCb) {
-            wx.offAccelerometerChange(_accelerometerCb);
+            my.offAccelerometerChange(_accelerometerCb);
             _accelerometerCb = undefined;
           }
         };
 
         minigame.startAccelerometer = function (res) {
           if (_accelerometerCb) {
-            wx.onAccelerometerChange(_accelerometerCb);
+            my.onAccelerometerChange(_accelerometerCb);
           }
 
-          wx.startAccelerometer(res);
+          my.startAccelerometer(res);
         };
 
-        minigame.createInnerAudioContext = createInnerAudioContextPolyfill(wx, {
+        minigame.createInnerAudioContext = createInnerAudioContextPolyfill(my, {
           onPlay: true,
           onPause: true,
           onStop: true,
@@ -16039,7 +16039,7 @@ return {
         }, true);
 
         minigame.getSafeArea = function () {
-          var locSystemInfo = wx.getSystemInfoSync();
+          var locSystemInfo = my.getSystemInfoSync();
           return locSystemInfo.safeArea;
         };
 
@@ -43977,7 +43977,7 @@ return {
                 _minigame$wx2,
                 _minigame$wx2$onKeyUp;
 
-            (_minigame$wx = minigame.wx) === null || _minigame$wx === void 0 ? void 0 : (_minigame$wx$onKeyDow = _minigame$wx.onKeyDown) === null || _minigame$wx$onKeyDow === void 0 ? void 0 : _minigame$wx$onKeyDow.call(_minigame$wx, function (res) {
+            (_minigame$wx = minigame.my) === null || _minigame$wx === void 0 ? void 0 : (_minigame$wx$onKeyDow = _minigame$my.onKeyDown) === null || _minigame$wx$onKeyDow === void 0 ? void 0 : _minigame$wx$onKeyDow.call(_minigame$wx, function (res) {
               var keyCode = getKeyCode(res.code);
 
               if (!_this._keyStateMap[keyCode]) {
@@ -43992,7 +43992,7 @@ return {
 
               _this._keyStateMap[keyCode] = true;
             });
-            (_minigame$wx2 = minigame.wx) === null || _minigame$wx2 === void 0 ? void 0 : (_minigame$wx2$onKeyUp = _minigame$wx2.onKeyUp) === null || _minigame$wx2$onKeyUp === void 0 ? void 0 : _minigame$wx2$onKeyUp.call(_minigame$wx2, function (res) {
+            (_minigame$wx2 = minigame.my) === null || _minigame$wx2 === void 0 ? void 0 : (_minigame$wx2$onKeyUp = _minigame$wx2.onKeyUp) === null || _minigame$wx2$onKeyUp === void 0 ? void 0 : _minigame$wx2$onKeyUp.call(_minigame$wx2, function (res) {
               var keyCode = getKeyCode(res.code);
 
               var eventKeyUp = _this._getInputEvent(res, InputEventType.KEY_UP);
@@ -44040,10 +44040,10 @@ return {
           _proto._registerEvent = function _registerEvent() {
             var _minigame$wx, _minigame$wx$onMouseD, _minigame$wx2, _minigame$wx2$onMouse, _minigame$wx3, _minigame$wx3$onMouse, _minigame$wx4, _minigame$wx4$onWheel;
 
-            (_minigame$wx = minigame.wx) === null || _minigame$wx === void 0 ? void 0 : (_minigame$wx$onMouseD = _minigame$wx.onMouseDown) === null || _minigame$wx$onMouseD === void 0 ? void 0 : _minigame$wx$onMouseD.call(_minigame$wx, this._createCallback(InputEventType.MOUSE_DOWN));
-            (_minigame$wx2 = minigame.wx) === null || _minigame$wx2 === void 0 ? void 0 : (_minigame$wx2$onMouse = _minigame$wx2.onMouseMove) === null || _minigame$wx2$onMouse === void 0 ? void 0 : _minigame$wx2$onMouse.call(_minigame$wx2, this._createCallback(InputEventType.MOUSE_MOVE));
-            (_minigame$wx3 = minigame.wx) === null || _minigame$wx3 === void 0 ? void 0 : (_minigame$wx3$onMouse = _minigame$wx3.onMouseUp) === null || _minigame$wx3$onMouse === void 0 ? void 0 : _minigame$wx3$onMouse.call(_minigame$wx3, this._createCallback(InputEventType.MOUSE_UP));
-            (_minigame$wx4 = minigame.wx) === null || _minigame$wx4 === void 0 ? void 0 : (_minigame$wx4$onWheel = _minigame$wx4.onWheel) === null || _minigame$wx4$onWheel === void 0 ? void 0 : _minigame$wx4$onWheel.call(_minigame$wx4, this._handleMouseWheel.bind(this));
+            (_minigame$wx = minigame.my) === null || _minigame$wx === void 0 ? void 0 : (_minigame$wx$onMouseD = _minigame$my.onMouseDown) === null || _minigame$wx$onMouseD === void 0 ? void 0 : _minigame$wx$onMouseD.call(_minigame$wx, this._createCallback(InputEventType.MOUSE_DOWN));
+            (_minigame$wx2 = minigame.my) === null || _minigame$wx2 === void 0 ? void 0 : (_minigame$wx2$onMouse = _minigame$wx2.onMouseMove) === null || _minigame$wx2$onMouse === void 0 ? void 0 : _minigame$wx2$onMouse.call(_minigame$wx2, this._createCallback(InputEventType.MOUSE_MOVE));
+            (_minigame$wx3 = minigame.my) === null || _minigame$wx3 === void 0 ? void 0 : (_minigame$wx3$onMouse = _minigame$wx3.onMouseUp) === null || _minigame$wx3$onMouse === void 0 ? void 0 : _minigame$wx3$onMouse.call(_minigame$wx3, this._createCallback(InputEventType.MOUSE_UP));
+            (_minigame$wx4 = minigame.my) === null || _minigame$wx4 === void 0 ? void 0 : (_minigame$wx4$onWheel = _minigame$wx4.onWheel) === null || _minigame$wx4$onWheel === void 0 ? void 0 : _minigame$wx4$onWheel.call(_minigame$wx4, this._handleMouseWheel.bind(this));
           };
 
           _proto._createCallback = function _createCallback(eventType) {
