@@ -62786,8 +62786,9 @@ var __classPrivateFieldSet = window.__classPrivateFieldSet;
               }).then(function () {
                 return _this3._loadPreloadAssets();
               }).then(function () {
-                builtinResMgr.compileBuiltinMaterial();
-                return SplashScreen.instance.init();
+                // builtinResMgr.compileBuiltinMaterial();
+                // return SplashScreen.instance.init();
+                return Promise.resolve();
               }).then(function () {
                 {
                   console.timeEnd('Init Project');
