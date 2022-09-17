@@ -2717,7 +2717,7 @@ return {
             if (!path) return Promise.resolve();
             return new Promise(function (resolve, reject) {
               if ( !path.startsWith('http')) {
-                fsUtils.readJson(path, (err, result) => {
+                $global.fsUtils.readJson(path, (err, result) => {
                   if (err) {
                     reject(err);
                     return;
