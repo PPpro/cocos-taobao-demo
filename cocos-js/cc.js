@@ -11,6 +11,7 @@ var __cocos_require__ = window.__cocos_require__;
 var Image = window.Image;
 var HTMLCanvasElement = window.HTMLCanvasElement;
 var HTMLImageElement = window.HTMLImageElement;
+var HTMLElement = window.HTMLElement;
 var ImageBitmap = window.ImageBitmap;
 var document = window.document;
 var DOMParser = window.DOMParser;
@@ -8478,14 +8479,14 @@ my
                 if (!path) return Promise.resolve();
                 return new Promise(function (resolve, reject) {
                   if ( !path.startsWith('http')) {
-                    var result = $global.fsUtils.readJsonSync(path);
-
-                    if (result instanceof Error) {
-                      reject(result);
-                    } else {
-                      _this._settings = result;
+                    $global.fsUtils.readJson(path, (err, data) => {
+                      if (err) {
+                        reject(err);
+                        return;
+                      }
+                      _this._settings = data;
                       resolve();
-                    }
+                    });
                   } else {
                     var xhr = new XMLHttpRequest();
                     xhr.open('GET', path);
