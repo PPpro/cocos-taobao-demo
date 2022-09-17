@@ -62921,7 +62921,7 @@ var requestAnimationFrame = window.requestAnimationFrame;
 
               if (!this._inited) return;
 
-              if (!SplashScreen.instance.isFinished) {
+              if (false) {
                 SplashScreen.instance.update(this._calculateDT());
               } else if (this._shouldLoadLaunchScene) {
                 this._shouldLoadLaunchScene = false;
