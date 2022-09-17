@@ -1,4 +1,4 @@
-System.register("chunks:///_virtual/internal", [], function () {
+$global.System.register("chunks:///_virtual/internal", [], function () {
   'use strict';
 
   return {
@@ -9,7 +9,7 @@ System.register("chunks:///_virtual/internal", [], function () {
 (function(r) {
   r('virtual:///prerequisite-imports/internal', 'chunks:///_virtual/internal'); 
 })(function(mid, cid) {
-    System.register(mid, [cid], function (_export, _context) {
+    $global.System.register(mid, [cid], function (_export, _context) {
     return {
         setters: [function(_m) {
             var _exportObj = {};

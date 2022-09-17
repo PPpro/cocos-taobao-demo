@@ -72,7 +72,7 @@ $global.System.register('no-schema:/engine-adapter.js', [], (exports, context) =
       if (REGEX.test(url)) {
         onComplete && onComplete(new Error('Can not load remote scripts'));
       } else {
-        require('../../../' + url);
+        // require('../../../' + url);
     
         onComplete && onComplete(null);
       }
@@ -301,7 +301,7 @@ $global.System.register('no-schema:/engine-adapter.js', [], (exports, context) =
           }
         }
     
-        require('./' + js);
+        // require('./' + js);
     
         options.__cacheBundleRoot__ = bundleName;
         var config = "".concat(url, "/config.").concat(suffix, "json");
@@ -1219,7 +1219,6 @@ $global.System.register('no-schema:/engine-adapter.js', [], (exports, context) =
         });
       },
       readJsonSync: function readJsonSync(path) {
-        debugger
         try {
           var res = fs.readFileSync({
             filePath: path,
