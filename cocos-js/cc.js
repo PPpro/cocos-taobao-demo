@@ -39,6 +39,7 @@ var __importStar = window.__importStar;
 var __importDefault = window.__importDefault;
 var __classPrivateFieldGet = window.__classPrivateFieldGet;
 var __classPrivateFieldSet = window.__classPrivateFieldSet;
+
     'use strict';
     return {
         execute: function () {
@@ -8477,7 +8478,7 @@ my
                 if (!path) return Promise.resolve();
                 return new Promise(function (resolve, reject) {
                   if ( !path.startsWith('http')) {
-                    var result = fsUtils.readJsonSync(path);
+                    var result = $global.fsUtils.readJsonSync(path);
 
                     if (result instanceof Error) {
                       reject(result);

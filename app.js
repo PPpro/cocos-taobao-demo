@@ -45,6 +45,7 @@ App({
     console.info('App onLaunched');
 
     $global.__cocosCallback = function () {
+      require('./polyfills.bundle.js');
       require('./system.bundle.js');
       require('./load-module.js');
       const importMap = require('./src/import-map.js');
@@ -53,23 +54,24 @@ App({
         importMap,
         importMapUrl: 'src/import-map.js',
       });
-      System.import('./web-adapter.js');
-      System.import("./polyfills.bundle.js");
-            
-      System.import('./application.js').then(({ Application }) => {
-          return new Application();
-      }).then((application) => {
-          return onApplicationCreated(application);
-      }).catch((err) => {
-          console.error(err);
-      });
-      
-      function onApplicationCreated(application) {
-          return System.import('cc').then((cc) => {
-            System.import('./engine-adapter.js');
-              return application.init(cc);
-          }).then(() => { return application.start(); });
-      }      
+      System.import('./web-adapter.js')
+      .then(() => {
+        return System.import('cc');
+      })
+      .then((cc) => {
+        return System.import('./engine-adapter.js')
+        .then(() => {
+          return System.import('./application.js')
+          .then(({ Application }) => {
+            const application = new Application();
+            application.init(cc);
+            return application.start();
+          });
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });    
     };
 
     my.onShow = function (cb) {
